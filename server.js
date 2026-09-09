@@ -3,26 +3,74 @@ const http = require("http");
 const PORT = 5000;
 
 const server = http.createServer((req, res) => {
-  res.writeHead(200, { "Content-Type": "text/html" });
+  // Navigation Links
+  const navigation = `
+    <nav>
+      <a href="/">Home</a> |
+      <a href="/blog">Blog</a> |
+      <a href="/contact">Contact</a> |
+      <a href="/about">About</a>
+    </nav>
+    <hr>
+  `;
 
   // Home Route
   if (req.url === "/") {
-    res.end("<h1>Home Page</h1>");
+    res.writeHead(200, { "Content-Type": "text/html" });
+
+    res.end(`
+      ${navigation}
+      <h1>Home Page</h1>
+      <p>Welcome to our Home Page.</p>
+      <p>This is a simple website built using Node.js.</p>
+    `);
   }
 
   // Blog Route
   else if (req.url === "/blog") {
-    res.end("<h1>Blog Page</h1>");
+    res.writeHead(200, { "Content-Type": "text/html" });
+
+    res.end(`
+      ${navigation}
+      <h1>Blog Page</h1>
+      <p>Welcome to our Blog Page.</p>
+      <p>Here you can find our latest articles and updates.</p>
+    `);
   }
 
   // Contact Route
   else if (req.url === "/contact") {
-    res.end("<h1>Contact Page</h1>");
+    res.writeHead(200, { "Content-Type": "text/html" });
+
+    res.end(`
+      ${navigation}
+      <h1>Contact Page</h1>
+      <p>Welcome to our Contact Page.</p>
+      <p>You can contact us for any questions or information.</p>
+    `);
   }
 
   // About Route
   else if (req.url === "/about") {
-    res.end("<h1>About Page</h1>");
+    res.writeHead(200, { "Content-Type": "text/html" });
+
+    res.end(`
+      ${navigation}
+      <h1>About Page</h1>
+      <p>Welcome to our About Page.</p>
+      <p>Learn more about this simple Node.js project.</p>
+    `);
+  }
+
+  // Invalid Route
+  else {
+    res.writeHead(404, { "Content-Type": "text/html" });
+
+    res.end(`
+      ${navigation}
+      <h1>404 - Page Not Found</h1>
+      <p>The page you are looking for does not exist.</p>
+    `);
   }
 });
 
